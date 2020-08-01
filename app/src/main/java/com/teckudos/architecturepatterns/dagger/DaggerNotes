@@ -1,0 +1,85 @@
+Dagger2 -
+Dependency means one class uses another class if object of class A has a reference to object of class
+B then class A depends on class B
+                        A class -- depends on -> B class
+                        A class <- dependency of -- B class
+Injection means passing this from outside
+
+Car class without dependency here car class is responsible for creating it's own engine and wheels object
+class Car {
+    Engine engine;
+    Wheels wheels;
+
+    Car() {
+        engine = new Engine();
+        wheels = new Wheels();
+    }
+
+    void drive() {
+
+    }
+}
+
+Car class with dependency injection
+class Car {
+    Engine engine;
+    Wheels wheels;
+
+    Car(Engine engine, Wheels wheels) {
+        this.engine = engine;
+        this.wheels = wheels;
+    }
+
+    void drive() {
+
+    }
+}
+
+Dependency injection is a design pattern  - we use di everywhere eg - when we call recyclerview.setAdapter(adapter)
+we do di or passing context to object TextView tv = new TextView(getApplicationContext())
+so where dagger comes let's say engine needs new object of blocks, cylinders, sparkPlugs
+Blocks blocks = new Blocks();
+---- cylinders , ---- sparkPlugs
+Engine engine = new Engine(blocks, cylinders, sparkPlugs) then we pass this to Car class
+Car car = new Car(engine, wheels) before creating car object we need to create engine object
+we have to do lot of initialization before so manual di having lot of tedious work now whenever we
+change constructor or how we have to configure one of the classes then we have to update this everywhere
+this is where dagger like dependency injection framework comes into play the main responsibility to get
+rid of this boilerplate code we teach dagger how to construct this objects and then it creates them
+at right time and right order
+
+@Component
+interface CarComponent {
+    Car getCar();
+}
+
+class Car {
+    @Inject
+    Car() { } construction injection
+}
+
+now dagger will implement this interface and create DaggerCarComponent class for us
+
+CarComponent component = DaggerCarComponent.create();
+Car car = component.getCar();
+car.drive();
+
+DAG - directed acyclic graph from this DAGger comes
+
+Dagger Basics -
+1.Dagger Application
+2.Dagger AppCompatActivity
+3.Dagger FragmentClasses
+
+CustomScopes and Annotations -
+Types Of Injection -
+1.Constructor Injection
+2.Field Injection
+3.Method Injection
+
+@Provides annotation
+Declaring static method with @Provides annotation
+Fragment Injection
+ViewModel Injection
+Repository Pattern
+Retrofit2 with dagger
