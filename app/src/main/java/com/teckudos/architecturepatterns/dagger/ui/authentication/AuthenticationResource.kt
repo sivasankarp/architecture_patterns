@@ -1,6 +1,6 @@
 package com.teckudos.architecturepatterns.dagger.ui.authentication
 
-internal class AuthenticationResource<T>(
+class AuthenticationResource<T>(
     val status: AuthStatus,
     val data: T?,
     val message: String?

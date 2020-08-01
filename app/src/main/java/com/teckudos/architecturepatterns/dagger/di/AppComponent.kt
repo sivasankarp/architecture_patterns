@@ -18,8 +18,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class, // it need to specify for dagger support in android
-        ActivityBuildersModule::class,
         AppModule::class,
+        ActivityBuildersModule::class,
         ViewModelFactoryModule::class
     ]
 )

@@ -1,5 +1,6 @@
 package com.teckudos.architecturepatterns.dagger.di
 
+import com.teckudos.architecturepatterns.dagger.di.authentication.AuthenticationModule
 import com.teckudos.architecturepatterns.dagger.ui.authentication.AuthenticationActivity
 import com.teckudos.architecturepatterns.dagger.di.authentication.AuthenticationViewModelsModule
 import dagger.Module
@@ -18,7 +19,8 @@ abstract class ActivityBuildersModule {
     * */
     @ContributesAndroidInjector(
         modules = [
-            AuthenticationViewModelsModule::class
+            AuthenticationViewModelsModule::class,
+            AuthenticationModule::class
         ]
     )
     abstract fun contributeAuthenticationActivity(): AuthenticationActivity
