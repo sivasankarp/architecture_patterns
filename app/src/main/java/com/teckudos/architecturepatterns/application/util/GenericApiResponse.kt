@@ -4,7 +4,7 @@ import android.util.Log
 import retrofit2.Response
 
 /**
- * Copied from Architecture components google sample:
+ * Code from Architecture components google sample
  * https://github.com/googlesamples/android-architecture-components/blob/master/GithubBrowserSample/app/src/main/java/com/android/example/github/api/ApiResponse.kt
  */
 @Suppress("unused") // T is used in extending classes
